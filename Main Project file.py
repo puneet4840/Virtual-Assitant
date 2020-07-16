@@ -184,6 +184,18 @@ if __name__ == "__main__":
         elif 'created' in que:
             que=que.replace(que,'')
             speak('I have been created by Puneet Kumar')
+
+        elif 'what can you do' in que:
+            que=que.replace(que,'')
+            speak('You can ask-')
+            speak('time')
+            speak('temperature')
+            speak('use calculator')
+            speak('play music')
+            speak('search anything on google')
+            speak('play games')
+            speak('you can open software')
+            speak('send mail to anyone')
             
         elif 'stop' in que or 'exit' in que or 'bye' in que:
             que=que.replace(que,'')
@@ -205,22 +217,34 @@ if __name__ == "__main__":
 
         elif 'mysql' in que or 'sql' in que:
             que=que.replace(que,'')
+            speak('so do you want to create data base.')
+            speak('opening mysql')
             subprocess.Popen("C:\\Program Files\\MySQL\\MySQL Workbench 8.0 CE\\MySQLWorkbench.exe")
 
         elif 'pycharm' in que:
             que=que.replace(que,'')
+            speak('But Visual Studio Code is your favourite ide')
+            speak('opening pycharm')
             subprocess.Popen('C:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.3.4\\bin\\pycharm64.exe')
 
         elif 'notepad' in que:
             que=que.replace(que,'')
+            speak('opening notepad')
             os.system('notepad.exe') 
 
         elif 'control panel' in que:
             que=que.replace(que,'')
+            speak('opening control panel')
             os.system('control.exe')  
 
         elif 'file explorer' in que or 'explorer' in que:
             que=que.replace(que,'')
+            speak('opening file explorer')
+            os.system('explorer.exe')
+
+        elif 'this pc' in que:
+            que=que.replace(que,'')
+            speak('opening this pc')
             os.system('explorer.exe')
 
         elif 'calculator' in que:
@@ -231,22 +255,29 @@ if __name__ == "__main__":
             que=que.replace(que,'')
             os.system('cmd.exe')
 
-        elif 'turn off wifi' in que:
+        elif 'Wi-Fi' in que:
             que=que.replace(que,'')
+            speak('i will also not listening now')
+            speak('Wi-Fi turned off')
             os.system("netsh interface set interface 'Wifi' disabled")
 
-        elif 'turn on wifi' in que:
+        elif 'turn on Wi-Fi' in que or 'Wi-Fi' in que:
             que=que.replace(que,'')
             os.system("netsh interface set interface 'Wifi' enabled")
 
-        elif 'How are you' in que:
+        elif 'how are you' in que:
             que=que.replace(que,'')
             speak(f'I am good {user_name}')
             speak('So, How are you.')
 
-        elif 'I love you' in que:
+        elif 'i love you' in que:
             que=que.replace(que,'')
             speak('I am very delighted to hear that')
+
+        elif 'i am fine' in que:
+            que=que.replace(que,'')
+            speak('okay, god always bless you.')
+            speka('what do you want to ask')
 
         elif 'will you marry me' in que:
             que=que.replace(que,'')
@@ -345,6 +376,18 @@ if __name__ == "__main__":
                 w=w.replace(w,'')
                 os.system('taskkill /f /im'+' Control.exe')
 
+        elif 'locate' in que or 'map' in que:
+            que=que.replace(que,'')
+            speak('what do you want to locate')
+            loc=Listen()
+            webbrowser.open('https://www.google.com/maps/place/'+loc)
+
+        elif 'maps' in que or 'google map' in que:
+            que=que.replace(que,'')
+            speak('what do you want to locate')
+            loc=Listen()
+            webbrowser.open('https://www.google.com/maps/place/'+loc)
+
         
         elif 'send email' in que:
             que=que.replace(que,'')
@@ -402,12 +445,25 @@ if __name__ == "__main__":
             speak('These are the games')
             speak('1: Guessing the number game')
 
-        elif 'what is' in que or 'who is' in que:
+        elif 'what' in que or 'who' in que:
             speak('Wait for the result')
-            result=client.query(que)
-            que=que.replace(que,'')
-            ans=next(result.results).text
-            speak(f"Result is:  {ans}")
+            try:
+                result=client.query(que)
+                que=que.replace(que,'')
+                ans=next(result.results).text
+                speak(f"Result is:  {ans}")
+            except:
+                speak('Unable to find')
+
+        elif 'when' in que or 'where' in que:
+            speak('Wait for the result')
+            try:
+                result=client.query(que)
+                que=que.replace(que,'')
+                ans=next(result.results).text
+                speak(f"Result is:  {ans}")
+            except:
+                speak('Unable to find')
 
         elif 'temperature of' in que or 'temperature in' in que:
             speak('Just wait.')
