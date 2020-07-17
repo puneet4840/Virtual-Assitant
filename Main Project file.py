@@ -17,6 +17,8 @@ import wolframalpha
 import pyjokes
 import wikiquote
 import subprocess
+import requests
+import json
 
 
 wikipedia.set_rate_limiting(True)
@@ -111,7 +113,17 @@ def Guess_g():
                 speak('sorry, you lose')
                 break
 
+def news():
+    url="https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=52afef4f44314099adb8a2b5841009df"
+    bbc=requests.get(url).json()
+    article=bbc["articles"]
+    results=[]
 
+    for ar in article:
+        results.append(ar["title"])
+
+    for i in range(len(results)):
+        speak(results[i])
 
 
 
@@ -176,6 +188,11 @@ if __name__ == "__main__":
             que=que.replace(que,'')
             speak('According to wikipedia')
             speak(result)
+
+        elif 'news' in que or 'latest news' in que:
+            que=que.replace(que,'')
+            speak('todays news:')
+            news()
 
         elif 'who made you' in que:
             que=que.replace(que,'')
@@ -277,7 +294,7 @@ if __name__ == "__main__":
         elif 'i am fine' in que:
             que=que.replace(que,'')
             speak('okay, god always bless you.')
-            speka('what do you want to ask')
+            speak('what do you want to ask')
 
         elif 'will you marry me' in que:
             que=que.replace(que,'')
