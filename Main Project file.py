@@ -59,9 +59,9 @@ def Listen():
 jarvis_intro='I am Jarvis, Your assistant sir'
 user_name='Puneet'
 user_email='pkv4840@gmail.com'
-email_pass='8126484099'
+
 f_n=''
-app_id='JE47GT-G2l459KLh6'
+
 client=wolframalpha.Client(app_id)
 
 
@@ -114,7 +114,7 @@ def Guess_g():
                 break
 
 def news():
-    url="https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=52afef4f44314099adb8a2b5841009df"
+    url="https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
     bbc=requests.get(url).json()
     article=bbc["articles"]
     results=[]
