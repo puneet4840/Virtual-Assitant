@@ -1,4 +1,4 @@
-# Vitual-Assitant
+# Virtual-Assitant
 This is a project called vitual assistant.You can give voice commands and get the specified results.
 You can ask:
 1: time
